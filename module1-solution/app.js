@@ -10,6 +10,8 @@ function LunchCheckerController($scope) {
   $scope.dishesList = "";
   $scope.checkMessage = "";
   $scope.warningMessage = "";
+  $scope.messageColor = "color:black";
+  $scope.imputTextBorderColor ="";
 
   $scope.checkLunch = function () {
     //warning message is cleared every time we check
@@ -18,6 +20,8 @@ function LunchCheckerController($scope) {
     //If there is not any dishes we have nothing to check
     if($scope.dishesList.length===0){
       $scope.checkMessage = "Please enter data first";
+      $scope.messageColor = "color:red";
+      $scope.imputTextBorderColor ="border-color:red";
       return;
     }
 
@@ -26,6 +30,8 @@ function LunchCheckerController($scope) {
 
     //check the number of dishes
     $scope.checkMessage = checkMessage(itemsArray);
+    $scope.messageColor = "color:green";
+    $scope.imputTextBorderColor ="border-color:green";
 
     //warning about empty dishes in the list
     $scope.warningMessage = checkEmptyItems (itemsArray);
