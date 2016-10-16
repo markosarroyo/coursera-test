@@ -45,6 +45,11 @@ function NarrowItDownController (MenuSearchService) {
   menu.getMatchedMenuItems = function (searchTerm) {
     var promise = MenuSearchService.getMatchedMenuItems(searchTerm);
 
+    if(searchTerm===''){
+      menu.found=[];
+      return;
+    }
+
     promise.then(function (response) {
       menu.found = response;
     })
@@ -63,7 +68,9 @@ function MenuSearchService($http, menuItemsURL,$q) {
   var service = this;
 
   service.getMatchedMenuItems = function (searchTerm) {
+
     searchTerm=searchTerm.toLowerCase();
+
 
     return $http({method: "GET",url: (menuItemsURL)}).then(function (result){
       //process result and only keep items that match
