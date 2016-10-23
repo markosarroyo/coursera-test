@@ -1,0 +1,10 @@
+<nav class="breadcrumb">
+  <a class="breadcrumb-item"        ui-sref="home">Home</a>
+  <a class="breadcrumb-item active" ui-sref="categories">Categories</a>
+</nav>
+<h2>Our Menu Categories</h2>
+<ul>
+  <li ng-repeat="category in categoriesCtrl.categories">
+    <a ui-sref="items({categoryShortName: category.short_name})"> {{ category.name }} ({{ category.short_name }})</a>
+  </li>
+</ul>
