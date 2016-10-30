@@ -1,0 +1,96 @@
+<div class="cotainer">
+<div>
+  <fieldset>
+    <legend style="color:white">Sign up registration form</legend>
+    <form name="signUpForm"
+  novalidate>
+
+      <!--First name-->
+      <input  type="text"
+              class="formControl"
+              style="color:black"
+              name="firstName"
+              placeholder="First name"
+              required
+              minlength="2"
+              ng-maxlength="30"
+              ng-model="signUpCtrl.user.firstName">
+      <span
+        ng-if="(signUpForm.firstName.$error.minlength || signUpForm.firstName.$error.required) && signUpForm.firstName.$touched">
+        Username must be at least 2 characters long
+      </span>
+      <span ng-if="signUpForm.firstName.$error.maxlength && signUpForm.firstName.$touched">
+        Username must not be longer than 30 characters
+      </span>
+      <br/>
+
+      <!--Last name-->
+      <input  type="text"
+              class="formControl"
+              style="color:black"
+              name="lastName"
+              placeholder="Last name"
+              required
+              minlength="3"
+              ng-maxlength="40"
+              ng-model="signUpCtrl.user.lastName">
+      <span
+        ng-if="(signUpForm.lastName.$error.minlength || signUpForm.lastName.$error.required) && signUpForm.lastName.$touched">
+        Username must be at least 3 characters long
+      </span>
+      <span ng-if="signUpForm.lastName.$error.maxlength && signUpForm.lastName.$touched">
+        Username must not be longer than 40 characters
+      </span>
+      <br/>
+
+      <!--Email-->
+      <input  type="email"
+              class="formControl"
+              style="color:black"
+              name="email"
+              placeholder="Email"
+              ng-model="signUpCtrl.user.email"
+        required>
+      <span ng-if="signUpForm.email.$invalid && signUpForm.email.$touched">
+        Must be a valid email address: handle@domain format
+      </span>
+      <br/>
+
+      <!--Phone number-->
+      <input  type="text"
+              class="formControl"
+              style="color:black"
+              name="phoneNumber"
+              placeholder="Phone ###-##-##-##"
+              ng-model="signUpCtrl.user.phoneNumber"
+              pattern="(\d{3})-(\d{2})-(\d{2})-(\d{2})">
+      <span ng-if="signUpForm.phoneNumber.$invalid && signUpForm.phoneNumber.$touched">
+        Phone must be in the spanish format ###-##-##-##.
+      </span>
+      <br/>
+
+      <!--Favorite dish-->
+      <input  type="text"
+              class="formControl"
+              style="color:black"
+              name="favoriteDishCode"
+              placeholder="Your favorite dish code"
+              ng-model="signUpCtrl.user.favoriteDishCode">
+      <span ng-if="signUpCtrl.unexistingDish">
+        No such menu number exists
+      </span>
+      <br/>
+
+      <!--submit button-->
+      <button
+        class="btn btn-primary active"
+        ng-disabled="signUpForm.$invalid"
+        ng-click="signUpCtrl.submit()">Submit</button>
+
+        <span  ng-if="signUpCtrl.savedOK">
+          You signed up correctly!
+        </span>
+    </form>
+  </fieldset>
+</div>
+</div>

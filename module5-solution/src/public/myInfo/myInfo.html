@@ -1,0 +1,18 @@
+<div class="container">
+  <div ng-show="{{ myInfoCtrl.user.firstName.length === undefined }}">
+  Not Signed Up Yet. <a ui-sref="signUp">Sign up Now!</a>
+  </div>
+  <div ng-show="{{ myInfoCtrl.user.firstName.length !== undefined  }}">
+    <h2>Your registered info</h2>
+    <ul>
+      <li>First Name: <span>{{myInfoCtrl.user.firstName}}</span></li>
+      <li>Last Name: <span>{{myInfoCtrl.user.lastName}}</span></li>
+      <li>e-mail: <span>{{myInfoCtrl.user.email}}</span></li>
+      <li>Phone Number: <span>{{myInfoCtrl.user.phoneNumber}}</span></li>
+      <li><strong>Favorite Dish</strong><br/>
+        {{myInfoCtrl.user.favoriteDish.short_name}} - {{myInfoCtrl.user.favoriteDish.name}}<br/>
+        {{myInfoCtrl.user.favoriteDish.description}}<br/>
+        <img ng-src="{{myInfoCtrl.path}}/images/{{myInfoCtrl.user.favoriteDish.short_name}}.jpg" alt="{{myInfoCtrl.user.favoriteDish.name}}"></li>
+    </ul>
+  </div>
+</div>
